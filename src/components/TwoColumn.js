@@ -74,28 +74,3 @@ export default function TwoColumn({ name, children }) {
         </Popover>
     );
 }
-
-// import { ChevronDownIcon } from "@heroicons/react/20/solid";
-// import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-
-// export default function MyPopover() {
-//     return (
-//         <Popover className="relative">
-//             <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-//                 <span>Solutions</span>
-//                 <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
-//             </PopoverButton>
-
-//             <PopoverPanel className="absolute z-10">
-//                 <div className="grid grid-cols-2">
-//                     <a href="/analytics">Analytics</a>
-//                     <a href="/engagement">Engagement</a>
-//                     <a href="/security">Security</a>
-//                     <a href="/integrations">Integrations</a>
-//                 </div>
-
-//                 <img src="/solutions.jpg" alt="" />
-//             </PopoverPanel>
-//         </Popover>
-//     );
-// }
