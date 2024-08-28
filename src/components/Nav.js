@@ -2,15 +2,130 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import TwoColumn from "./TwoColumn";
+import NavigationData from "../data/NavigationData";
 
-const navigation = [
-    { name: "Overview", href: "#" },
-    { name: "How Computers Work", href: "#" },
-    { name: "The Brain", href: "#" },
-    { name: "AI", href: "#" },
-    { name: "Neuromorphic Computing", href: "#" },
-    { name: "Applications & Impacts", href: "#" },
-];
+// const navigation = [
+//     {
+//         name: "AI & the Brain",
+//         children: [
+//             {
+//                 name: "How Computers Work",
+//                 description: "Something about edge computing...",
+//                 href: "#",
+//                 icon: BsSmartwatch,
+//             },
+//             {
+//                 name: "The Brain",
+//                 description: "Something about cybersecurity...",
+//                 href: "#",
+//                 icon: FingerPrintIcon,
+//             },
+//             {
+//                 name: "AI",
+//                 description: "Something about medical devices...",
+//                 href: "#",
+//                 icon: CiMedicalCase,
+//             },
+//             {
+//                 name: "Neuromorphic Computing",
+//                 description: "Something about robotics...",
+//                 href: "#",
+//                 icon: PiRobotLight,
+//             },
+//         ],
+//     },
+//     // { name: "How Computers Work", href: "#" },
+//     // { name: "The Brain", href: "#" },
+//     // { name: "AI", href: "#" },
+//     {
+//         name: "Neuromorphic Computing",
+//         children: [
+//             {
+//                 name: "Edge Computing",
+//                 description: "Something about edge computing...",
+//                 href: "#",
+//                 icon: BsSmartwatch,
+//             },
+//             {
+//                 name: "Cybersecurity",
+//                 description: "Something about cybersecurity...",
+//                 href: "#",
+//                 icon: FingerPrintIcon,
+//             },
+//             {
+//                 name: "Medical Devices",
+//                 description: "Something about medical devices...",
+//                 href: "#",
+//                 icon: CiMedicalCase,
+//             },
+//             {
+//                 name: "Robotics",
+//                 description: "Something about robotics...",
+//                 href: "#",
+//                 icon: PiRobotLight,
+//             },
+//         ],
+//     },
+//     {
+//         name: "Applications",
+//         children: [
+//             {
+//                 name: "Edge Computing",
+//                 description: "Something about edge computing...",
+//                 href: "#",
+//                 icon: BsSmartwatch,
+//             },
+//             {
+//                 name: "Cybersecurity",
+//                 description: "Something about cybersecurity...",
+//                 href: "#",
+//                 icon: FingerPrintIcon,
+//             },
+//             {
+//                 name: "Medical Devices",
+//                 description: "Something about medical devices...",
+//                 href: "#",
+//                 icon: CiMedicalCase,
+//             },
+//             {
+//                 name: "Robotics",
+//                 description: "Something about robotics...",
+//                 href: "#",
+//                 icon: PiRobotLight,
+//             },
+//         ],
+//     },
+//     {
+//         name: "Impacts",
+//         children: [
+//             {
+//                 name: "Edge Computing",
+//                 description: "Something about edge computing...",
+//                 href: "#",
+//                 icon: BsSmartwatch,
+//             },
+//             {
+//                 name: "Cybersecurity",
+//                 description: "Something about cybersecurity...",
+//                 href: "#",
+//                 icon: FingerPrintIcon,
+//             },
+//             {
+//                 name: "Medical Devices",
+//                 description: "Something about medical devices...",
+//                 href: "#",
+//                 icon: CiMedicalCase,
+//             },
+//             {
+//                 name: "Robotics",
+//                 description: "Something about robotics...",
+//                 href: "#",
+//                 icon: PiRobotLight,
+//             },
+//         ],
+//     },
+// ];
 
 export default function Nav() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -42,17 +157,21 @@ export default function Nav() {
                     </button>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
-                    {navigation.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            className="text-sm font-semibold leading-6 text-gray-900"
-                        >
-                            {item.name}
-                        </a>
+                    {NavigationData.map((item) => (
+                        // <a
+                        //     key={item.name}
+                        //     href={item.href}
+                        //     className="text-sm font-semibold leading-6 text-gray-900"
+                        // >
+                        //     {item.name}
+                        // </a>
+                        <TwoColumn name={item.name} children={item.children} />
                     ))}
+                    {/* <TwoColumn /> */}
                 </div>
             </nav>
+
+            {/* Mobile Naviagtion */}
             <Dialog
                 open={mobileMenuOpen}
                 onClose={setMobileMenuOpen}
@@ -81,7 +200,7 @@ export default function Nav() {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-2 py-6">
-                                {navigation.map((item) => (
+                                {NavigationData.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.href}
